@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --redhero: #E02041;
+  --black: #13131A;
+  --white: #FFFFFF;
+  
+  --gray-800: #41414D;
+  --gray-500: #737380;
+  --gray-300: #A8A8B3;
+  --gray-100: #DCDCE5;
+
+  --background: #F0F0F5;
+}
+
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%; // 1 rem = 15px
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%; // 1 rem = 14px
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--black);
+}
+
+body, input, textarea, button, select {
+  font: 400 1rem "Roboto", sans-serif
+}
+
+button {
+  cursor: pointer;
+}
+
+[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
