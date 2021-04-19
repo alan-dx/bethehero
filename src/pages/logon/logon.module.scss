@@ -1,0 +1,46 @@
+.container {
+  margin: 0 auto;
+  max-width: 1120px;
+  height: 100vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .formContainer {
+    height: 100vh;
+    flex: 1;
+    justify-content: space-around;
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 350px;
+
+    > div {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+  
+      div {
+        margin-top: 1rem;
+      }
+
+      > button:last-child {
+        margin-top: 2.65rem;
+      }
+    }
+  }
+
+  > img {
+   width: 640px;
+   height: 576px;
+ }
+}

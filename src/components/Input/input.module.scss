@@ -1,0 +1,22 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  
+  margin-top: 1rem;
+
+  input {
+    height: 4rem;
+    border: 1px solid var(--gray-100);
+    border-radius: 0.5rem;
+  
+    padding: 0.5rem;
+    color: var(--gray-800);
+    font-weight: 500;
+    font-size: 1.2rem;
+
+    &::placeholder {
+      color: var(--gray-300);
+      font-weight: 400;
+    }
+  }
+}
