@@ -1,15 +1,26 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, ForwardRefRenderFunction, forwardRef } from 'react'
+import { FieldError } from 'react-hook-form'
 import styles from './input.module.scss'
 
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> { //extends all attributes of input (component dom)
+  error?: FieldError
+}
 
-export const Input = ({name ,...rest}:InputHTMLAttributes<HTMLInputElement>) => {
+const InputBase:ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({error = null, name, ...rest}, ref) => {
+
   return (
     <div className={styles.inputContainer}>
-      {/* <label htmlFor={name}>{name}</label> */}
       <input 
-        className={styles.input} 
-        {...rest} 
+        className={styles.input}
+        name={name}
+        {...rest}
       />
+      {!!error &&
+        (<label htmlFor={name}>{error.message}</label>)
+      }
     </div>
   )
+  
 }
+
+export const Input = forwardRef(InputBase)
