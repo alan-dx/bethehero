@@ -3,9 +3,9 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { Input } from '../../components/Input'
-import { LabelButton } from '../../components/LabelButton'
+import { LabelLink } from '../../components/LabelLink'
 import { RedButton } from '../../components/RedButton'
-import styles from './logon.module.scss'
+import styles from './signin.module.scss'
 
 type SignInFormData = {
   email: string;
@@ -17,7 +17,7 @@ const SignInFormSchema = yup.object().shape({
   password: yup.string().required('Senha obrigatória')
 })
 
-export default function Logon() {
+export default function SignIn() {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(SignInFormSchema)
@@ -25,28 +25,30 @@ export default function Logon() {
 
   const handleSignIn:SubmitHandler<SignInFormData> = async (values, event) => {
     console.log(values)
+    console.log('awsq')
   }
 
   return (
     <div className={styles.container}>
-      <div className={styles.formContainer}>
+      <div className={styles.infoContainer}>
         <div>
           <img src="/images/logo.svg" alt="Logo"/>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit(handleSignIn)}>
-          <h1>Faça seu logon</h1>
-          <Input placeholder="Seu Email" type="email" name="email" error={errors.email} {...register('email')} />
-          <Input placeholder="Sua senha" type="password" name='password' error={errors.password} {...register('password')} />
-          <div>
-            <RedButton type="submit">
-              Entrar
-            </RedButton>
-          </div>
-          <LabelButton type="button" text="Não tenho conta" signup onClick={() => {console.log('modal')}} />
-        </form>
+        <main className={styles.formContainer} id="main">
+          <h1>Faça seu login</h1>
+          <form onSubmit={handleSubmit(handleSignIn)}>
+            <Input placeholder="Seu Email" type="email" name="email" error={errors.email} {...register('email')} />
+            <Input placeholder="Sua senha" type="password" name='password' error={errors.password} {...register('password')} />
+            <div>
+              <RedButton type="submit">
+                Entrar
+              </RedButton>
+            </div>
+          </form>
+          <LabelLink text="Não tenho conta" signup href="signup" />
+        </main>
       </div>
-
       <img src="/images/peoples.svg" alt="Avatar"/>
     </div>
   )
