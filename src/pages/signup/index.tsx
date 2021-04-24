@@ -3,7 +3,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { Input } from '../../components/Input'
-import { LabelLink } from '../../components/LabelLink'
+import { LabelButton } from '../../components/LabelButton'
 import { RedButton } from '../../components/RedButton'
 import styles from './signup.module.scss'
 
@@ -44,7 +44,7 @@ export default function SignUp() {
           <img src="/images/logo.svg" alt="logo"/>
           <h1>Cadastro</h1>
           <p>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.</p>
-          <LabelLink href="/signin" text="Voltar para o login" />
+          <LabelButton onClick={() => {}} text="Voltar para o login" />
         </div>
         <div className={styles.formContainer}>
           <form onSubmit={handleSubmit(handleSignUp)}>

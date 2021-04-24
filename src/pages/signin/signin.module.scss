@@ -27,14 +27,18 @@
     .formContainer {
       display: flex;
       flex-direction: column;
-      flex: 1;
+      flex: 2;
   
       div {
         margin-top: 1rem;
       }
 
-      > div:last-child {
-        margin-top: 2.65rem;
+      > button:last-child {
+        margin-top: 1.65rem;
+      }
+
+      .oAuthContainer {
+        display: flex;
       }
     }
   }

@@ -1,0 +1,26 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  background: #3030303d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  z-index: 1;
+  margin: 0 auto;
+
+  .modalContainer {
+    min-width: 320px;
+    min-height: 320px;
+    background: var(--background);
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    position: relative;
+
+    display: flex;
+    
+  }
+}
