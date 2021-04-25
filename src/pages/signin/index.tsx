@@ -8,8 +8,10 @@ import { LabelButton } from '../../components/LabelButton'
 import { RedButton } from '../../components/RedButton'
 import styles from './signin.module.scss'
 import SignUpModal from '../../components/SignUpModal'
-import { OAuthButton } from '../../components/OAuthButton'
-import { FaGithub, FaGooglePlusG } from 'react-icons/fa'
+import { SignInGitHubButton } from '../../components/SignInGitHubButton'
+import { SignInGoogleButton } from '../../components/SignInGoogleButton'
+import { GetServerSideProps } from 'next'
+import { getSession } from 'next-auth/client'
 
 type SignInFormData = {
   email: string;
@@ -31,6 +33,7 @@ export default function SignIn() {
 
   const handleSignIn:SubmitHandler<SignInFormData> = async (values, event) => {
     console.log(values)
+    alert('Functionality still under development!')
 
   }
 
@@ -63,12 +66,8 @@ export default function SignIn() {
               </div>
             </form>
             <div className={styles.oAuthContainer}>
-              <OAuthButton onClick={() => console.log('github')} >
-                <FaGithub color="#E02041" size={22} />
-              </OAuthButton>
-              <OAuthButton>
-                <FaGooglePlusG color="#E02041" size={28} />
-              </OAuthButton>
+              <SignInGitHubButton />
+              <SignInGoogleButton />
             </div>
             <LabelButton text="Não tenho conta" signup onClick={handleOpenSignUpModal} />
           </main>
@@ -77,4 +76,22 @@ export default function SignIn() {
       </div>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({req, params}) => {
+
+  const session = await getSession({ req })
+
+  if (session) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
 }
