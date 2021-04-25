@@ -1,0 +1,29 @@
+.container {
+  background-color: var(--white);
+  height: 20rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 2.1rem;
+
+  div {
+
+    strong {
+      font-size: 0.93rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+  
+    p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--gray-500);
+    }
+  }
+
+}

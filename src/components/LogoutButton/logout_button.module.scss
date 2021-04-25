@@ -1,0 +1,15 @@
+.container {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-100);
+  background-color: var(--background);
+
+  margin-left: 1.6rem;
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--white);
+  }
+}

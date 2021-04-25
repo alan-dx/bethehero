@@ -1,0 +1,21 @@
+.container {
+  margin: 0 auto;
+  max-width: 1120px;
+
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 500;
+
+    color: var(--black);
+  }
+
+  .casesContainer {
+    padding: 2.1rem 0rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(540px, 1fr)); // repeat() como foi passado o parm auto-fit o num de col será calculado auto, 540px indica o maximo
+  }
+}

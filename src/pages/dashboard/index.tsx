@@ -1,6 +1,9 @@
 import { GetServerSideProps } from 'next'
-import { signOut, getSession } from 'next-auth/client'
-import { useEffect } from 'react'
+import { getSession } from 'next-auth/client'
+import { CaseCard } from '../../components/CaseCard'
+import { Header } from '../../components/Header'
+
+import styles from './dashboard.module.scss'
 
 export default function Dashboard() {
 
@@ -8,12 +11,22 @@ export default function Dashboard() {
   //consiga ver a tela ou desabilite o JS pra tentar burlar
 
   return (
-    <h1>
-      DASHBOARD
-      <button onClick={() => signOut()} >
-        SignOut
-      </button>
-    </h1>
+    <>
+      <Header />
+      <main className={styles.container} >
+        <h1>Casos cadastrados</h1>
+        <div className={styles.casesContainer}>
+          <CaseCard />
+          <CaseCard />
+          <CaseCard />
+          <CaseCard />
+          <CaseCard />
+          <CaseCard />
+          <CaseCard />
+          <CaseCard />
+        </div>
+      </main>
+    </>
   )
 }
 
