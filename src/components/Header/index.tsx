@@ -3,10 +3,13 @@ import { RedButton } from '../RedButton'
 import { useSession } from 'next-auth/client'
 import styles from './header.module.scss'
 
-export function Header() {
+interface HeaderProps {
+  handleOpenAddCaseModal: () => void
+}
+
+export function Header({handleOpenAddCaseModal}: HeaderProps) {
 
   const [session] = useSession();
-
  
   return (
     <header className={styles.container}>
@@ -18,7 +21,7 @@ export function Header() {
       
     <div className={styles.buttonsContainer} >
       <div>
-        <RedButton>
+        <RedButton onClick={handleOpenAddCaseModal} >
           Cadastrar novo caso
         </RedButton>
       </div>

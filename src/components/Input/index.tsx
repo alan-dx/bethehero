@@ -15,8 +15,11 @@ const InputBase:ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({error
         name={name}
         {...rest}
       />
-      {!!error &&
-        (<label htmlFor={name}>{error.message}</label>)
+      {!!error 
+        ?
+        <label htmlFor={name}>Opa! {error.message}</label>
+        :
+        <label htmlFor={name} style={{visibility: 'hidden'}}>a</label>
       }
     </div>
   )

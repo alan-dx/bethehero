@@ -15,7 +15,7 @@
   .casesContainer {
     padding: 2.1rem 0rem;
     display: grid;
-    gap: 1rem;
+    gap: 1rem;  
     grid-template-columns: repeat(auto-fit, minmax(540px, 1fr)); // repeat() como foi passado o parm auto-fit o num de col será calculado auto, 540px indica o maximo
   }
 }

@@ -59,7 +59,7 @@ export default function SignIn() {
             <form onSubmit={handleSubmit(handleSignIn)}>
               <Input placeholder="Seu Email" type="email" name="email" error={errors.email} {...register('email')} />
               <Input placeholder="Sua senha" type="password" name='password' error={errors.password} {...register('password')} />
-              <div>
+              <div className={styles.buttonContainer}>
                 <RedButton type="submit">
                   Entrar
                 </RedButton>

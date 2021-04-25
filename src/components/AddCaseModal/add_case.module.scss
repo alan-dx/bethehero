@@ -1,0 +1,44 @@
+.container {
+  flex: 1;
+
+  main {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.5rem 6.4rem;
+
+    .infoContainer {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      img {
+        align-self: flex-start;
+        width: 191px;
+        height: 81px;
+      }
+      
+      h1 {
+        font-weight: 700;
+        font-size: 2.4rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: var(--gray-300);
+
+        margin-right: 6.4rem;
+      }
+    }
+
+    .formContainer {
+      flex: 1;
+      
+      .buttonsContainer {
+        margin-top: 0.5rem;
+        display: flex;
+      }
+    }
+  }
+
+}

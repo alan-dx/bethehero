@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   
-  input {
-    height: 4rem;
+  textarea {
+    height: 11.7rem;
     border: 1px solid var(--gray-100);
     border-radius: 0.5rem;
+    resize: none;
   
     padding: 0.5rem;
     color: var(--gray-800);

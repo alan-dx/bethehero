@@ -1,8 +1,12 @@
 import styles from './case_card.module.scss'
+import { FiTrash2 } from 'react-icons/fi'
 
 export function CaseCard() {
   return (
     <div className={styles.container}>
+        <button>
+          <FiTrash2 color="#A8A8B3" size={20} />
+        </button>
         <div>
           <strong>CASO:</strong>
           <p>Cadelinha atropelada</p>
