@@ -1,3 +1,6 @@
+import { query as q } from 'faunadb'
+import { fauna } from '../../../services/faunadb'
+
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
@@ -10,18 +13,38 @@ export default NextAuth({
     })
   ],
   callbacks: {
-    async session(session) {
+    async signIn(user, account, profile) {
+      const { email } = user
       try {
-        console.log('session', session.user.email)
-
-        return {...session}
+        
+        await fauna.query(
+          q.If(
+            q.Not(
+              q.Exists(
+                q.Match(
+                  q.Index('user_by_email'),
+                  q.Casefold(email)
+                )
+              )
+            ),
+            q.Create(
+              q.Collection('users'),
+              { data: { email }}
+            ),
+            q.Get(
+              q.Match(
+                q.Index('user_by_email'),
+                q.Casefold(email)
+              )
+            )
+          )
+        )
+        
+        return true
       } catch (error) {
-        console.warn('erro')
-
-        return {
-          ...session
-        }
+        console.log(error)
+        return false
       }
-    }
+    } 
   }
 })

@@ -2,6 +2,7 @@ import ModalBase from "../ModalBase";
 import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from 'react-query'
 
 import { Input } from '../Input'
 import { LabelButton } from '../LabelButton'
@@ -9,6 +10,9 @@ import { Textarea } from "../Textarea";
 import { RedButton } from '../RedButton'
 import { CancelButton } from '../CancelButton'
 import styles from './add_case.module.scss'
+import { api } from "../../services/api";
+import { useSession } from "next-auth/client";
+import { queryClient } from "../../services/queryClient";
 
 type CaseFormData = {
   title: string;
@@ -29,12 +33,31 @@ interface CaseModalProps {
 
 export default function AddCaseModal({ isOpen, handleClose }: CaseModalProps) {
 
+
+  const [ session ] = useSession()
+
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(caseFormSchema)
   })
 
-  const handleSignUp: SubmitHandler<CaseFormData> = async (values, event) => {
-    console.log(values)
+  const createCase = useMutation(async (data: CaseFormData) => {
+
+    const response = await api.post('cases', {
+      user_email: session?.user.email,
+      case: {...data}
+    })
+  }, {
+    onSuccess: () => {
+      handleClose()
+      queryClient.invalidateQueries('cases')
+    },
+    onError: () => {
+      alert("Ops! Tivemos um problema ao criar este caso, tente novamente!")
+    }
+  })
+
+  const handleAddCase: SubmitHandler<CaseFormData> = async (values, event) => {
+    await createCase.mutateAsync(values)
   }
 
   return (
@@ -48,7 +71,7 @@ export default function AddCaseModal({ isOpen, handleClose }: CaseModalProps) {
             <LabelButton onClick={handleClose} text="Voltar para home" />
           </div>
           <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit(handleSignUp)}>
+            <form onSubmit={handleSubmit(handleAddCase)}>
               <Input placeholder="Título do caso" type="text" name="title" error={errors.title} {...register('title')} />
               <Textarea placeholder="Descrição" name="description" error={errors.description} {...register('description')} />
               <Input placeholder="Valor em reais" type="text" name="price" error={errors.price} {...register('price')}/>

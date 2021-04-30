@@ -1,23 +1,33 @@
 import styles from './case_card.module.scss'
 import { FiTrash2 } from 'react-icons/fi'
 
-export function CaseCard() {
+interface CaseProps {
+  data: {
+    id: string,
+    title: string,
+    description: string,
+    price: string
+  },
+  deleteCase: (id?: string) => void
+}
+
+export function CaseCard({data, deleteCase}:CaseProps) {
   return (
     <div className={styles.container}>
-        <button>
+        <button onClick={() => deleteCase(data.id)}>
           <FiTrash2 color="#A8A8B3" size={20} />
         </button>
         <div>
           <strong>CASO:</strong>
-          <p>Cadelinha atropelada</p>
+          <p>{data.title}</p>
         </div>
         <div>
           <strong>DESCRIÇÃO:</strong>
-          <p>A cadelinha Jolie foi atropelada por um carro no bairro Santana e teve que passar por uma cirurgia às pressas.</p>
+          <p>{data.description}</p>
         </div>
         <div>
           <strong>VALOR:</strong>
-          <p>R$ 120,00 reais</p>
+          <p>R$ {data.price}</p>
         </div>
     </div>
   )
