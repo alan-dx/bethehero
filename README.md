@@ -1,4 +1,4 @@
-<h4>
+<h4 align="center">
   <img src="./public/images/logo.svg"/><br>
 </h4>
 
