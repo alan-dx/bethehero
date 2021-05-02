@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Provider session={pageProps.session} >
         <Component {...pageProps} />
       </Provider>
-      <ReactQueryDevtools />
+      { process.env.NODE_ENV == 'development' && <ReactQueryDevtools />}
     </QueryClientProvider>
   )
 }

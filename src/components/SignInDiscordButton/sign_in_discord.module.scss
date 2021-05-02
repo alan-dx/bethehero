@@ -6,4 +6,10 @@
   background-color: var(--white);
 
   margin-right: 0.5rem;
+
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--gray-50);
+  }
 }

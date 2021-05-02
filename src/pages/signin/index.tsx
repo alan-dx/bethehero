@@ -12,6 +12,8 @@ import { SignInGitHubButton } from '../../components/SignInGitHubButton'
 import { SignInGoogleButton } from '../../components/SignInGoogleButton'
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/client'
+import { SignInDiscordButton } from '../../components/SignInDiscordButton'
+import { SignInFacebookButton } from '../../components/SignInFacebookButton'
 
 type SignInFormData = {
   email: string;
@@ -68,6 +70,8 @@ export default function SignIn() {
             <div className={styles.oAuthContainer}>
               <SignInGitHubButton />
               <SignInGoogleButton />
+              <SignInDiscordButton />
+              <SignInFacebookButton />
             </div>
             <LabelButton text="Não tenho conta" signup onClick={handleOpenSignUpModal} />
           </main>
