@@ -12,7 +12,10 @@ See the Figma project:
 ## Made with
   - NextJS;
   - NextAuth;
+  - Axios;
   - FaunaDB;
+  - React Hook Form;
+  - Yup;
   - React Query;
   - a lot of love :heart:
   
